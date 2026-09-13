@@ -36,6 +36,7 @@ jobs:
       uses: daun/playwright-report-summary@v4
       with:
         report-file: playwright/results.json
+        job-summary: true
 
     - name: Upload HTML Artifact
       if: ${{ !cancelled() }}
