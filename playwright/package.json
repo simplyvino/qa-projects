@@ -9,7 +9,7 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@playwright/test": "^1.41.0",
+    "@playwright/test": "^1.49.0",
     "@types/node": "^22.20.2",
     "dotenv": "^17.4.2"
   }
