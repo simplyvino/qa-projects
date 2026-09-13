@@ -30,7 +30,7 @@ jobs:
       env:
         SAUCEDEMO_PASSWORD: ${{ secrets.SAUCEDEMO_PASSWORD }}
         PLAYWRIGHT_JSON_OUTPUT_NAME: results.json
-      run: npx playwright test --reporter=json
+      run: npx playwright test --reporter=github,html,json
 
     # --- DEBUG STEP ---
     - name: Debug File Locations
