@@ -26,10 +26,17 @@ jobs:
     - name: Run Playwright tests
       env:
         SAUCEDEMO_PASSWORD: ${{ secrets.SAUCEDEMO_PASSWORD }}
-      run: npx playwright test
+      run: npx playwright test --reporter=github,html,json
 
-    - uses: actions/upload-artifact@v4
+    - name: Generate Summary Report
       if: ${{ !cancelled() }}
+      uses: marcolink/playwright-report-summary-action@v3
+      with:
+        report-file: playwright/results.json
+
+    - name: Upload HTML Artifact
+      if: ${{ !cancelled() }}
+      uses: actions/upload-artifact@v4
       with:
         name: playwright-report
         path: playwright/playwright-report/
