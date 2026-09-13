@@ -31,6 +31,17 @@ jobs:
         SAUCEDEMO_PASSWORD: ${{ secrets.SAUCEDEMO_PASSWORD }}
       run: npx playwright test --reporter=github,html,json
 
+    # --- DEBUG STEP ---
+    - name: Debug File Locations
+      if: ${{ !cancelled() }}
+      run: |
+        echo "=== Current Working Directory ==="
+        pwd
+        echo "=== Listing Repository Root Layout ==="
+        cd ..
+        ls -R
+    # ------------------
+
     - name: Generate Summary Report
       if: ${{ !cancelled() }}
       uses: daun/playwright-report-summary@v4
